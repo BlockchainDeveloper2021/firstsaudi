@@ -1,64 +1,77 @@
 import logo from "./logo.svg";
 import "./App.css";
+import react, { useState } from "react";
 import Person from "./Components/Person/Person";
 import NewPerson from "./Components/NewPerson/NewPerson";
+import Filter from "./Components/Filter/Filter";
+import Card from "./Components/Card/Card";
+import PersonChart from "./Components/Person/PersonChart";
+const DummyPersons = [
+  {
+    id: "e1",
+    title: "AI Ironr",
+    name: "Abeer Omar",
+    date: new Date(2020, 7, 14),
+  },
+  {
+    id: "e2",
+    title: "AI Iron",
+    name: "Abeer Omar",
+    date: new Date(2021, 2, 12),
+  },
+  {
+    id: "e3",
+    title: "AI Iron",
+    name: "Abeer Omar",
+    date: new Date(2021, 2, 28),
+  },
+  {
+    id: "e4",
+    title: "AI Iron",
+    name: "Abeer Omar",
+    date: new Date(2021, 5, 12),
+  },
+];
 
 function App() {
-  const Persons = [
-    {
-      id: "e1",
-      title: "AI Ironr",
-      name: "Abeer Omar",
-      date: new Date(2020, 7, 14),
-    },
-    {
-      id: "e2",
-      title: "AI Iron",
-      name: "Abeer Omar",
-      date: new Date(2021, 2, 12),
-    },
-    {
-      id: "e3",
-      title: "AI Iron",
-      name: "Abeer Omar",
-      date: new Date(2021, 2, 28),
-    },
-    {
-      id: "e4",
-      title: "AI Iron",
-      name: "Abeer Omar",
-      date: new Date(2021, 5, 12),
-    },
-  ];
-
+  const [persons, setPersons] = useState(DummyPersons);
   const personHandeler = (person) => {
-    console.log("hhhh");
-    console.log(person);
+    setPersons((prevState) => {
+      return [person, ...prevState];
+    });
   };
+
+  const [filteredYear, setFilteredYear] = useState("2020");
+
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
+
+  const filteredPersons = persons.filter((person) => {
+    return person.date.getFullYear().toString() === filteredYear;
+  });
+
+  let content = <p>Np any person</p>;
+
+  if (filteredPersons.length > 0) {
+    content = filteredPersons.map((person) => (
+      <Person
+        key={person.id}
+        title={person.title}
+        name={person.name}
+        date={person.date}
+      />
+    ));
+  }
   return (
     <div>
       <h2>Let's get started!</h2>
       <NewPerson onAddPerson={personHandeler} />
-      <Person
-        title={Persons[0].title}
-        name={Persons[0].name}
-        date={Persons[0].date}
-      ></Person>
-      <Person
-        title={Persons[1].title}
-        name={Persons[1].name}
-        date={Persons[1].date}
-      ></Person>
-      <Person
-        title={Persons[2].title}
-        name={Persons[2].name}
-        date={Persons[2].date}
-      ></Person>
-      <Person
-        title={Persons[3].title}
-        name={Persons[3].name}
-        date={Persons[3].date}
-      ></Person>
+
+      <Card>
+        <Filter selected={filteredYear} onChangeFilter={filterChangeHandler} />
+        {content}
+      </Card>
     </div>
   );
 }

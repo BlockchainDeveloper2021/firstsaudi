@@ -1,0 +1,28 @@
+.expenses-filter {
+  color: white;
+  padding: 0 1rem;
+}
+
+.expenses-filter__control {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.expenses-filter label {
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+  color: rgb(47, 143, 138);
+  font-family: cursive;
+}
+
+.expenses-filter select {
+  font-family: cursive;
+  padding: 0.5rem 3rem;
+  font-weight: bold;
+  border-radius: 6px;
+  border-color: rgb(47, 143, 138);
+  color: rgb(47, 143, 138);
+}

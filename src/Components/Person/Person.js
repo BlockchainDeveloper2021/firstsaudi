@@ -12,7 +12,7 @@ function Person(props) {
   };
 
   return (
-    <Card>
+    <div>
       <div className="expense-item">
         <Date date={props.date} />
         <div className="expense-item__description">
@@ -21,7 +21,7 @@ function Person(props) {
         </div>
       </div>
       <button onClick={clickHandler}>Change .. </button>
-    </Card>
+    </div>
   );
 }
 

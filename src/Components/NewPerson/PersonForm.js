@@ -55,7 +55,10 @@ const PersonForm = (props) => {
         </div>
       </div>
       <div className="new-expense__action">
-        <button type="submit">Add New Accomplish</button>
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
+        <button type="submit">Add Accomplish</button>
       </div>
     </form>
   );

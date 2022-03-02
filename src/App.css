@@ -2,10 +2,15 @@
   text-align: center;
 }
 
-h2 {
+h2,
+p {
   text-align: center;
   font-weight: bolder;
   font-family: cursive;
+}
+
+p {
+  font-size: larger;
 }
 .App-logo {
   height: 40vmin;
