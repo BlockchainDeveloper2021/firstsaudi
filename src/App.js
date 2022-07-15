@@ -1,11 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
 import react, { useState } from "react";
 import Person from "./Components/Person/Person";
 import NewPerson from "./Components/NewPerson/NewPerson";
 import Filter from "./Components/Filter/Filter";
 import Card from "./Components/Card/Card";
-import PersonChart from "./Components/Person/PersonChart";
+
 const DummyPersons = [
   {
     id: "e1",
